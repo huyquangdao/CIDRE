@@ -316,7 +316,6 @@ class CDRDataset(Dataset):
         self.idx2word = {k: v for v, k in word_vocab.items()}
 
     def __getitem__(self, idx):
-        
 
         label = self.labels[idx]
         pud_id, c_id, d_id, rel = label
@@ -345,7 +344,7 @@ class CDRDataset(Dataset):
 
             elmo_embedding = self.all_elmo[pud_id]
             ner_label_ids = self.all_ner_label_ids[pud_id]
-        
+
         elif self.model_type == "inter":
 
             token_ids = self.all_doc_token_ids[label]

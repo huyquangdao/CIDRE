@@ -153,7 +153,7 @@ class CDRCorpus:
 
     def generate_elmo_embedding(self, in_adjacency_dict):
 
-        print('Generating Elmo embedding ......')
+        print("Generating Elmo embedding ......")
 
         tokenizer = WhitespaceTokenizer()
         token_indexer = ELMoTokenCharactersIndexer()
@@ -171,7 +171,7 @@ class CDRCorpus:
             embedded_tokens = model(tensor_ids)
             assert len(doc_tokens) == embedded_tokens["elmo_representations"][0].shape[1]
             elmo_dict[pud_id] = embedded_tokens["elmo_representations"][0]
-            
+
         return elmo_dict
 
     def load_all_features_for_one_dataset(self, saved_folder_path, model_type, data_type):
@@ -209,7 +209,7 @@ class CDRCorpus:
         features = list(features)
         features.append(elmo_tensor)
         features.append(labels)
-        
+
         print("Saving generated features .......")
 
         for feature_name, feature in list(zip(self.list_feature_names, features)):
@@ -1028,7 +1028,7 @@ class CDRCorpus:
                 entity_annotations = self.get_valid_entity_mentions(entity_annotations)
                 # print(len(entity_annotations))
                 if not self.config.use_title:
-                    print('in here')
+                    print("in here")
                     # subtract title offset plus one space
                     for en_anno in entity_annotations:
                         en_anno[0] -= len(title) + 1
@@ -1248,7 +1248,7 @@ class CDRCorpus:
 
         # assert 1==0
         # print('total samples: ',len(all_labels))
-        print('inter samples: ',len(inter_labels))
+        print("inter samples: ", len(inter_labels))
 
         inter_abstract_labels = set(inter_abstract_labels)
         # print('max sent length: ',max_sent_length)

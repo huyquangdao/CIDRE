@@ -45,7 +45,8 @@ KEY_NAMES_LIST = [
     "use_pos",
     "use_word",
     "use_state",
-    "distance_thresh"
+    "distance_thresh",
+    "checkpoint_path",
 ]
 VALUE_TYPES_DICT = {
     "train_file_path": str,
@@ -88,8 +89,8 @@ VALUE_TYPES_DICT = {
     "use_pos": bool,
     "use_word": bool,
     "use_state": bool,
-    "distance_thresh":int
-
+    "distance_thresh": int,
+    "checkpoint_path": str,
 }
 
 

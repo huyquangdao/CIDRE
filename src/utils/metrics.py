@@ -1,4 +1,4 @@
-from sklearn.metrics import f1_score
+from sklearn.metrics import f1_score, precision_recall_fscore_support
 
 ner_vocab = {"O": 0, "B_Chemical": 1, "I_Chemical": 2, "B_Disease": 3, "I_Disease": 4}
 ner_idx2label = {0: "O", 1: "B_Chemical", 2: "I_Chemical", 3: "B_Disease", 4: "I_Disease"}
@@ -84,3 +84,7 @@ def decode_ner(list_ner_tokens):
 
 def compute_rel_f1(preds, trues, average="binary"):
     return f1_score(trues, preds, average=average)
+
+
+def compute_results(preds, trues, average="binary"):
+    return precision_recall_fscore_support(trues, preds, average=average)

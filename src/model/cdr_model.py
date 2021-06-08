@@ -376,6 +376,7 @@ class GraphStateLSTM(nn.Module):
         self.distance_embedding_dim = distance_embedding_dim
         self.entity_hidden_size = entity_hidden_size
         self.distance_thresh = distance_thresh
+        self.use_state = use_state
 
         if self.use_state:
             self.linear_chem = nn.Linear(self.encoder_hidden_size, entity_hidden_size)
@@ -384,7 +385,7 @@ class GraphStateLSTM(nn.Module):
             self.linear_chem = nn.Linear(self.encoder_lstm_hidden_size * 2, entity_hidden_size)
             self.linear_dis = nn.Linear(self.encoder_lstm_hidden_size * 2, entity_hidden_size)
 
-        self.sent_represent_dim = self.encoder_hidden_size if use_state else self.encoder_lstm_hidden_size * 2
+        self.sent_represent_dim = self.encoder_hidden_size if use_state else 0
 
         self.linear_score = nn.Linear(
             2 * entity_hidden_size + self.sent_represent_dim + distance_embedding_dim, relation_classes
@@ -492,7 +493,10 @@ class GraphStateLSTM(nn.Module):
         # concat_entities = [batch_size, max_mentions, max_mentions, feature_dim * 2]
 
         # print(concat_entities.shape)
-        concat_entities = torch.cat([concat_entities, distance_embedded, sent_represent], dim=-1)
+        if self.use_state:
+            concat_entities = torch.cat([concat_entities, distance_embedded, sent_represent], dim=-1)
+        else:
+            concat_entities = torch.cat([concat_entities, distance_embedded], dim=-1)
         concat_entities = concat_entities.view(
             bs,
             max_mentions * max_mentions,
