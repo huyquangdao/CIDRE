@@ -287,7 +287,7 @@ if __name__ == "__main__":
 
     print(model)
 
-    model_name = f"model_modeltype_{str(config.model_type)}_char_{str(config.use_char)}_pos_{str(config.use_pos)}_attn_{str(config.use_attn)}_ner_{(str.config.use_ner)}_state_{(str.config.use_state)}_distance_{(str.config.distance_thresh)}.pth"
+    model_name = f"model_modeltype_{str(config.model_type)}_char_{str(config.use_char)}_pos_{str(config.use_pos)}_attn_{str(config.use_attn)}_ner_{str(config.use_ner)}_state_{(str(config.use_state)}_distance_{str(config.distance_thresh)}.pth"
 
     model.cuda()
     weighted = torch.Tensor([1, 3.65]).cuda()
@@ -454,7 +454,7 @@ if __name__ == "__main__":
                 print("performance improved .... Save best model ...")
                 torch.save(model.state_dict(), os.path.join(config.checkpoint_path, model_name))
 
-if not config.use_full:
+if config.use_full:
     print("Save model ....")
     torch.save(model.state_dict(), os.path.join(config.checkpoint_path, model_name))
 
