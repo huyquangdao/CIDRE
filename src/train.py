@@ -288,7 +288,7 @@ if __name__ == "__main__":
 
     print(model)
 
-    model_name = f"model_modeltype_{str(config.model_type)}_char_{str(config.use_char)}_pos_{str(config.use_pos)}_attn_{str(config.use_attn)}_ner_{str(config.use_ner)}_state_{(str(config.use_state)}_distance_{str(config.distance_thresh)}.pth"
+    model_name = f"model_modeltype_{str(config.model_type)}_char_{str(config.use_char)}_pos_{str(config.use_pos)}_attn_{str(config.use_attn)}_ner_{str(config.use_ner)}_state_{str(config.use_state)}_distance_{str(config.distance_thresh)}.pth"
 
     model.cuda()
     weighted = torch.Tensor([1, 3.65]).cuda()
@@ -307,7 +307,7 @@ if __name__ == "__main__":
 
     best_f1 = -1
 
-    for i in range(3):
+    for i in range(config.epochs):
 
         loss_epoch = []
         val_loss_epoch = []

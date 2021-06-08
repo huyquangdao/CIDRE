@@ -294,7 +294,7 @@ if __name__ == "__main__":
     print("Evaluating on test set .......")
     print("Loading checkpoint .....")
 
-    model.load_state_dict(torch.load(config.checkpoint_path))
+    model.load_state_dict(torch.load(checkpoint_path))
     model.cuda()
     model.eval()
     test_rel_loss = []
@@ -303,6 +303,10 @@ if __name__ == "__main__":
     target_list = []
     ner_target_list = []
     ner_pred_list = []
+    weighted = torch.Tensor([1, 3.65]).cuda()
+    re_criterion = nn.CrossEntropyLoss(weight=weighted)
+    if config.use_ner:
+        ner_criterion = nn.CrossEntropyLoss()
 
     with torch.no_grad():
 

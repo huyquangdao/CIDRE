@@ -40,5 +40,6 @@
     "use_word": false,
     "use_state": true,
     "distance_thresh": 0,
-    "checkpoint_path": ".checkpoints/"
+    "checkpoint_path": "checkpoints/",
+    "epochs": 1
 }
