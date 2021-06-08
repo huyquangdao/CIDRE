@@ -3,6 +3,7 @@ import torch
 import torch.optim as optim
 import torch.nn as nn
 import numpy as np
+import os
 import random
 
 from tqdm import tqdm_notebook
