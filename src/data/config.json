@@ -34,12 +34,12 @@
     "gradient_accumalation": 1,
     "word2vec_path": "/content/gdrive/My Drive/Word2vec_pubmed_full.npy",
     "saved_folder_path": "./data/prepared_data/",
-    "model_type": "inter",
+    "model_type": "full",
     "use_char": true,
     "use_pos": true,
     "use_word": false,
     "use_state": true,
     "distance_thresh": 0,
     "checkpoint_path": "checkpoints/",
-    "epochs": 1
+    "epochs": 3
 }
